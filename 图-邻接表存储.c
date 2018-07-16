@@ -1,16 +1,16 @@
 #include <stdio.h>
-
+#include <stdlib.h>
 typedef struct Node
 {
-	int dest;				//ÁÚ½Ó±ßµÄ»¡Í·½áµãÐòºÅ
-	struct Node *next;		//Ö¸ÏòÏÂÒ»ÌõÁÚ½Ó±ß
+	int dest;				//é‚»æŽ¥è¾¹çš„å¼§å¤´ç»“ç‚¹åºå·
+	struct Node *next;		//æŒ‡å‘ä¸‹ä¸€æ¡é‚»æŽ¥è¾¹
 }Edge;                      
 
 typedef struct
 {
-	int name;				//½áµãµÄÒ»Ð©Êý¾Ý£¬±ÈÈçÃû×Ö
-	Edge *firstAdj;			//ÁÚ½Ó±ßÍ·Ö¸Õë µÚÒ»¸öÁÚ½Óµã
-}AdjHeight;					//Êý×éµÄÊý¾ÝÔªËØÀàÐÍµÄ½á¹¹Ìå
+	int name;				//ç»“ç‚¹çš„ä¸€äº›æ•°æ®ï¼Œæ¯”å¦‚åå­—
+	Edge *firstAdj;			//é‚»æŽ¥è¾¹å¤´æŒ‡é’ˆ ç¬¬ä¸€ä¸ªé‚»æŽ¥ç‚¹
+}AdjHeight;					//æ•°ç»„çš„æ•°æ®å…ƒç´ ç±»åž‹çš„ç»“æž„ä½“
 
 void createGragh(AdjHeight *list,int n)
 {
@@ -28,7 +28,7 @@ void addEdge(AdjHeight *list,int a1,int a2)
     e=(Edge*)malloc(sizeof(Edge));
     e->dest=a2;
     e->next=NULL;
-    printf("ÔÚ%d-%dÖ®¼ä²åÈë±ß\n",a1,a2);
+    printf("åœ¨%d-%dä¹‹é—´æ’å…¥è¾¹\n",a1,a2);
 	list[a1-1].name=a1;
     if(list[a1-1].firstAdj!=NULL)
     {
@@ -45,14 +45,14 @@ void addEdge(AdjHeight *list,int a1,int a2)
 
 int main()
 {
-    printf("ÄãºÃ£¬ÊÀ½ç£¡\n");
+    printf("ä½ å¥½ï¼Œä¸–ç•Œï¼\n");
     
     int n=10;
     AdjHeight adjList[n];
 
-    createGragh(adjList,n);//´´½¨Í¼ 
+    createGragh(adjList,n);//åˆ›å»ºå›¾ 
 
-	//Ìí¼Ó»¡
+	//æ·»åŠ å¼§
     addEdge(adjList,1,2);
     addEdge(adjList,1,4);
     addEdge(adjList,1,5);
@@ -67,7 +67,7 @@ int main()
         {
             while(edge!=NULL)
             {
-                printf("NODE£º%d -> ",edge->dest);
+                printf("NODEï¼š%d -> ",edge->dest);
                 edge=edge->next;
             }
         }
